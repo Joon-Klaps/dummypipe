@@ -75,6 +75,7 @@ workflow DUMMYPIPE {
     // ! There is currently no tooling to help you write a sample sheet schema
     ch_samplesheet = Channel.fromSamplesheet(
         "input",
+        schema_filename: "$projectDir/assets/schema_input.json",
         immmutable_meta: false
     )
 
