@@ -66,19 +66,23 @@ workflow DUMMYPIPE {
     //
     // SUBWORKFLOW: Read in samplesheet, validate and stage input files
     //
-    INPUT_CHECK (
-        file(params.input)
-    )
-    ch_versions = ch_versions.mix(INPUT_CHECK.out.versions)
+    // INPUT_CHECK (
+    //     file(params.input)
+    // )
+    // ch_versions = ch_versions.mix(INPUT_CHECK.out.versions)
     // TODO: OPTIONAL, you can use nf-validation plugin to create an input channel from the samplesheet with Channel.fromSamplesheet("input")
     // See the documentation https://nextflow-io.github.io/nf-validation/samplesheets/fromSamplesheet/
     // ! There is currently no tooling to help you write a sample sheet schema
+    ch_samplesheet = Channel.fromSamplesheet(
+        "input",
+        immmutable_meta: false
+    )
 
     //
     // MODULE: Run FastQC
     //
     FASTQC (
-        INPUT_CHECK.out.reads
+        ch_samplesheet
     )
     ch_versions = ch_versions.mix(FASTQC.out.versions.first())
 
