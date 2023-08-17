@@ -10,16 +10,7 @@
         // Configure properties specific to VS Code.
         "vscode": {
             // Add the IDs of extensions you want installed when the container is created.
-            "extensions": ["ms-azuretools.vscode-docker"]
+            "extensions": ["ms-azuretools.vscode-docker", "nf-core.nf-core-extensionpack"]
         }
-    },
-
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
-
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "docker --version",
-
-    // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-    "remoteUser": "vscode"
+    }
 }
