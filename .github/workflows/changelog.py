@@ -52,10 +52,10 @@ def _determine_change_type(pr_title) -> tuple[str, str]:
     Returns a tuple of the section name and the module info.
     """
     sections = {
-        "Add": "### Enhancement",
-        "Fix": "### Fixed",
-        "Enhance": "### Enhancement",
-        "Param": "### Parameters",
+        "Add": "### `Enhancement`",
+        "Fix": "### `Fixed`",
+        "Enhance": "### `Enhancement`",
+        "Param": "### `Parameters`",
     }
     current_section_header = "### Enhancement"
     current_section = "Add"
