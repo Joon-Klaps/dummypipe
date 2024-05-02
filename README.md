@@ -61,6 +61,8 @@ nextflow run nf-core/dummypipe \
    --outdir <OUTDIR>
 ```
 
+Look I changed a line!
+
 > **Warning:**
 > Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those
 > provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_;
