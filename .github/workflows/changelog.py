@@ -48,18 +48,17 @@ if any(
 
 def _determine_change_type(pr_title) -> tuple[str, str]:
     """
-    Determine the type of the PR: Template, Download, Linting, Modules, Subworkflows, or General
+    Determine the type of the PR: Enhancement, Fixed, Parameters
     Returns a tuple of the section name and the module info.
     """
     sections = {
-        "Template": "### Template",
-        "Download": "### Download",
-        "Linting": "### Linting",
-        "Modules": "### Modules",
-        "Subworkflows": "### Subworkflows",
+        "Add": "### Enhancement",
+        "Fix": "### Fixed",
+        "Enhance": "### Enhancement",
+        "Param": "### Parameters",
     }
-    current_section_header = "### General"
-    current_section = "General"
+    current_section_header = "### Enhancement"
+    current_section = "Add"
 
     # Check if the PR in any of the sections.
     for section, section_header in sections.items():
