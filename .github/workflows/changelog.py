@@ -73,8 +73,8 @@ def _determine_change_type(pr_title) -> tuple[str, str]:
 # Determine the type of the PR
 section, section_header = _determine_change_type(pr_title)
 
-# Remove section indicator from the PR title.
-pr_title = re.sub(rf"{section}[:\s]*", "", pr_title, flags=re.IGNORECASE)
+# # Remove section indicator from the PR title.
+# pr_title = re.sub(rf"{section}[:\s]*", "", pr_title, flags=re.IGNORECASE)
 
 # Prepare the change log entry.
 pr_link = f"([#{pr_number}]({REPO_URL}/pull/{pr_number}))"
