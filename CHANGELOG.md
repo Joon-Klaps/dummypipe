@@ -9,6 +9,8 @@ Initial release of nf-core/dummypipe, created with the [nf-core](https://nf-co.r
 
 ### `Enhancement`
 
+- Add comment explaining the purpose of the added code in dummypipe.nf ([#7](https://github.com/Joon-Klaps/viralgenie/pull/7))
+
 ### `Fixed`
 
 ### `Parameters`
