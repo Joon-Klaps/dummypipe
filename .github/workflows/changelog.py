@@ -16,7 +16,7 @@ import sys
 from pathlib import Path
 from typing import List
 
-REPO_URL = "https://github.com/Joon-Klaps/viralgenie"
+REPO_URL = "https://github.com/Joon-Klaps/dummypipe"
 
 # Assumes the environment is set by the GitHub action.
 pr_title = os.environ["PR_TITLE"]
@@ -56,8 +56,9 @@ def _determine_change_type(pr_title) -> tuple[str, str]:
         "Fix": "### `Fixed`",
         "Enhance": "### `Enhancement`",
         "Param": "### `Parameters`",
+        "Include": "### `Enhancement`",
     }
-    current_section_header = "### Enhancement"
+    current_section_header = "### `Enhancement`"
     current_section = "Add"
 
     # Check if the PR in any of the sections.
@@ -98,7 +99,7 @@ updated_lines: List[str] = []
 
 
 def _skip_existing_entry_for_this_pr(line: str, same_section: bool = True) -> str:
-    if line.strip().endswith(pr_link):
+    if pr_link in line.strip():
         print(f"Found existing entry for this pull request #{pr_number}:")
         existing_lines = [line]
         if new_lines and new_lines == existing_lines and same_section:
@@ -132,7 +133,7 @@ while orig_lines:
     line = _skip_existing_entry_for_this_pr(line, same_section=False)
 
     if (
-        line.startswith("## ") and not line.strip() == "# Joon-Klaps/viralgenie: Changelog"
+        line.startswith("## ") and not line.strip() == "# Joon-Klaps/dummypipe: Changelog"
     ):  # Version header, e.g. "## v2.12dev"
         print(f"Found version header: {line.strip()}")
         updated_lines.append(line)
