@@ -11,4 +11,6 @@ Initial release of nf-core/dummypipe, created with the [nf-core](https://nf-co.r
 
 ### `Fixed`
 
+- Fixing the bugs ([#5](https://github.com/Joon-Klaps/viralgenie/pull/5))
+
 ### `Parameters`
