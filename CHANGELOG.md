@@ -9,6 +9,8 @@ Initial release of nf-core/dummypipe, created with the [nf-core](https://nf-co.r
 
 ### `Enhancement`
 
+- New random comment ([#9](https://github.com/Joon-Klaps/dummypipe/pull/9))
+
 ### `Fixed`
 
 ### `Parameters`
