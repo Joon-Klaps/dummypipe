@@ -32,6 +32,8 @@ ch_multiqc_custom_methods_description = params.multiqc_methods_description ? fil
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
+// DAMN SON
+
 //
 // SUBWORKFLOW: Consisting of a mix of local and nf-core/modules
 //
