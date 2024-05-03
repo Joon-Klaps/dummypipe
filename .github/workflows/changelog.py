@@ -67,7 +67,7 @@ def _determine_change_type(pr_title) -> tuple[str, str]:
         if re.sub(r"s$", "", section.lower().replace("ing", "")) in pr_title.lower():
             current_section_header = section_header
             current_section = section
-    print(f"Detected section: {current_section}")
+    print(f"Detected section: {current_section}, header: {current_section_header}")
     return current_section, current_section_header
 
 

@@ -49,6 +49,7 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: "+1"
+          token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
 
       - name: Commit & push changes
         if: steps.prettier_status.outputs.result == 'fail'
