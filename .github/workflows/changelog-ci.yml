@@ -84,7 +84,7 @@ jobs:
           reactions: hooray
           token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
 
-      - name: React if updated
+      - name: React if not updated
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
         if: |
           github.event_name == 'issue_comment' && env.changed != 'YES'
