@@ -6,10 +6,7 @@ on:
 jobs:
   deploy:
     # Only run if comment is on a PR with the main repo, and if it contains the magic keywords
-    if: >
-      github.event.issue.pull_request && (
-        contains(github.event.comment.body, '@Klaps-bot fix linting') ||
-        contains(github.event.comment.body, '@Klaps-bot fix-linting'))
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '@Klaps-bot fix linting')
     runs-on: ubuntu-latest
     steps:
       # Use the @Klaps-bot token to check out so we can push later
