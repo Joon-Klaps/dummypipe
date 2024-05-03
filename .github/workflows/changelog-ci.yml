@@ -22,7 +22,8 @@ jobs:
 
       - name: React on comment
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
-        if: github.event_name == 'issue_comment'
+        if: |
+          github.event_name == 'issue_comment'
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
@@ -75,24 +76,28 @@ jobs:
 
       - name: React if updated
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
-        if: github.event_name == 'issue_comment' && env.changed == 'YES'
+        if: |
+          github.event_name == 'issue_comment' && env.changed == 'YES'
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: hooray
 
       - name: React if updated
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4
-        if: github.event_name == 'issue_comment' && env.changed != 'YES'
+        if: |
+          github.event_name == 'issue_comment' && env.changed != 'YES'
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: confused
 
       - name: Run pre-commit checks
-        if: env.changed == 'YES'
+        if: |
+          env.changed == 'YES'
         run: |
           pre-commit run --all-files
       - name: Commit and push changes
-        if: env.changed == 'YES'
+        if: |
+          env.changed == 'YES'
         run: |
           git config user.email "167566642+Klaps-bot@users.noreply.github.com"
           git config user.name "Klaps-bot"
