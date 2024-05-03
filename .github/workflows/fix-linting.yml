@@ -20,6 +20,7 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: eyes
+          token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
 
       # Action runs on the issue comment, so we don't get the PR by default
       # Use the gh cli to check out the PR
@@ -67,6 +68,7 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: hooray
+          token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
 
       - name: react if linting errors were not fixed
         if: steps.commit-and-push.outcome == 'failure'
@@ -74,6 +76,7 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           reactions: confused
+          token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
 
       - name: react if linting errors were not fixed
         if: steps.commit-and-push.outcome  == 'failure'
@@ -82,4 +85,5 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             @${{ github.actor }} I tried to fix the linting errors, but it didn't work. Please fix them manually.
-            See [CI log](https://github.com/nf-core/tools/actions/runs/${{ github.run_id }}) for more details.
+            See [CI log](https://github.com/Joon-Klaps/dummypipe/actions/runs/${{ github.run_id }}) for more details.
+          token: ${{ secrets.KLAPS_BOT_AUTH_TOKEN }}
