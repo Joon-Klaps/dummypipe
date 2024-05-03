@@ -1,7 +1,7 @@
 name: Fix linting from a comment
 on:
   issue_comment:
-    types: [created]
+    types: [created, edited, deleted]
 
 jobs:
   deploy:
@@ -44,6 +44,7 @@ jobs:
       - name: Commit & push changes
         if: steps.prettier_status.outputs.result == 'fail'
         run: |
+          git config user.email "167566642+Klaps-bot@users.noreply.github.com"
           git config user.name "Klaps-bot"
           git config push.default upstream
           git add .
