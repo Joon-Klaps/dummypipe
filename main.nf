@@ -8,7 +8,7 @@
     Slack  : https://nfcore.slack.com/channels/foo
 ----------------------------------------------------------------------------------------
 */
-
+nextflow.preview.output = true
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     IMPORT FUNCTIONS / MODULES / SUBWORKFLOWS / WORKFLOWS
@@ -55,6 +55,9 @@ workflow NFCORE_FOO {
     )
     emit:
     multiqc_report = FOO.out.multiqc_report // channel: /path/to/multiqc_report.html
+
+    publish :
+    FOO.out.reads >> 'reads'
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -97,6 +100,23 @@ workflow {
     )
 }
 
+
+output {
+    'reads' {
+        enabled params.generate_downstream_samplesheets
+        path { val -> { file -> file } }
+        index {
+            path 'rnaseq.csv'
+            // header ['sample', 'fastq_1', 'fastq_2', 'strandedness']
+            // mapper {
+            //     meta, reads ->
+
+            // }
+        }
+        // path 'downstream_samplesheets'
+    }
+
+}
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     THE END

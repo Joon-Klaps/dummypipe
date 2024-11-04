@@ -35,16 +35,16 @@ workflow FOO {
     ch_versions = ch_versions.mix(FASTQC.out.versions.first())
 
 
-    
-    //
-    // SUBWORKFLOW: Generate downstream samplesheets
-    //
-    if (params.generate_downstream_samplesheets) {
-        GENERATE_DOWNSTREAM_SAMPLESHEETS(
-            ch_samplesheet
-        )
-    }
-    
+
+    // //
+    // // SUBWORKFLOW: Generate downstream samplesheets
+    // //
+    // if (params.generate_downstream_samplesheets) {
+    //     GENERATE_DOWNSTREAM_SAMPLESHEETS(
+    //         ch_samplesheet
+    //     )
+    // }
+
 
     //
     // Collate and save software versions
@@ -98,9 +98,10 @@ workflow FOO {
         []
     )
 
-    emit:multiqc_report = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
-    versions       = ch_versions                 // channel: [ path(versions.yml) ]
-
+    emit:
+    multiqc_report  = MULTIQC.out.report.toList() // channel: /path/to/multiqc_report.html
+    reads           = ch_samplesheet              // channel: samplesheet read in from --input
+    versions        = ch_versions                 // channel: [ path(versions.yml) ]
 }
 
 /*
